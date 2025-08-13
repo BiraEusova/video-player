@@ -1,8 +1,20 @@
-# React + Vite
+# Задание
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Необходимо создать мини веб-приложение, используя паттерн “Конечные автоматы” для управления состоянием интерфейса.
 
-Currently, two official plugins are available:
+[Видео](https://www.youtube.com/watch?v=3wZBSeLxVEw), в котором с помощью библиотеки XState создается управление состояниями видеоплеера.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Необходимо реализовать такой же функционал, используя [React](
+https://stately.ai/docs/xstate-react) или [Vue](https://stately.ai/docs/xstate-vue).
+В видео с примером используется старая версия XState 4, можно использовать версию 4 или 5.
+
+В качестве готового компонента для окна плеера можно использовать компонент Modal из библиотеки [Ant](https://ant.design/components/modal)
+
+Можно использовать данный [видеоплеер](https://github.com/CookPete/react-player) или любой другой.
+Аналогично с [видеопотоком](https://cdn.flowplayer.com/d9cd469f-14fc-4b7b-a7f6-ccbfa755dcb8/hls/383f752a-cbd1-4691-a73f-a4e583391b3d/playlist.m3u8).
+
+Необходимо добавить возможность переключения плеера на уменьшенную версию окна. Логика переключения между состояниями должна быть реализована в парадигме State Machines, с добавлением новых состояний в XState.
+
+[Образец](https://test-modulbank.web.app/) того что должно получиться. 
+
+При желании можно внести улучшения в интерфейс или добавить еще какой-нибудь функционал.
