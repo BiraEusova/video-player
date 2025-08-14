@@ -1,11 +1,11 @@
 import style from './VideoPlayer.module.css';
 import ReactPlayer from 'react-player';
 
-const VideoPlayer = () => {
+const VideoPlayer = ({playing}) => {
 
 	return (
 		<ReactPlayer
-			playing={true}
+			playing={playing}
 			muted
 			preload
 			loop={true}
