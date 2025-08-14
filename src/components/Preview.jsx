@@ -1,11 +1,11 @@
 import style from './preview.module.css'
 import PlayIcon from '../assets/play-icon.svg?react';
 
-const Preview = () => {
+const Preview = ({onClick}) => {
 
     return (
         <div className={style.preview}>
-            <button className={style.preview__button}>
+            <button className={style.preview__button} onClick={onClick}>
                 <PlayIcon className={style.preview__icon}/>
             </button>
         </div>
