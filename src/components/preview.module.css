@@ -1,0 +1,33 @@
+.preview {
+    width: 400px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #646cff;
+    border-radius: 18px;
+}
+
+.preview__button {
+    background: none;
+    color: #646cff;
+    border: 3px solid #646cff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.preview__button:hover {
+    transform: scale(1.1);
+}
+
+.preview__icon {
+    width: 32px;
+    height: 32px;
+    margin-left: 2px;
+}
