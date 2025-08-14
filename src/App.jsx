@@ -1,48 +1,47 @@
 import './App.css'
 import Preview from "./components/Preview.jsx";
 import {Button, Modal} from "antd";
-import {useState} from "react";
 import VideoPlayer from "./components/VideoPlayer.jsx";
 import {ArrowsAltOutlined, CaretRightOutlined, PauseOutlined, ShrinkOutlined} from "@ant-design/icons";
+import {useMachine} from "@xstate/react";
+import {videoModalMachine} from "./Xstate.js";
 
-const modalSizes = {
-	big: 1000,
-	small: 400
-}
 function App() {
-  const [modalOpen, setModalOpen] = useState(false);
-	const [videoPlaying, setVideoPlaying] = useState(true);
-	const [bigModalMode, setBigModalMode] = useState(true);
-	const [modalWidth, setModalWidth] = useState(modalSizes.big)
+	const [state, send] = useMachine(videoModalMachine);
+	const modalSize = state.context.modalSize;
 
 	return (
 		<>
-			<Preview onClick={() => setModalOpen(true)}/>
+			<Preview onClick={() => send({type: 'OPEN'})}/>
 			<Modal
 				className='modal'
-				width={modalWidth}
+				width={modalSize}
 				title="Video player"
 				centered
-				open={modalOpen}
-				onOk={() => setModalOpen(false)}
-				onCancel={() => setModalOpen(false)}
+				open={state.matches('opened')}
+				onCancel={() => send({type: 'CLOSE'})}
 				footer = {<>
 					<Button
 						shape="circle"
-						icon={videoPlaying ? <PauseOutlined /> : <CaretRightOutlined style={{marginLeft: '2px'}}/>}
-						onClick={() => setVideoPlaying(!videoPlaying)}
+						icon={
+							state.matches('opened.player.playing') ?
+							<PauseOutlined /> :
+							<CaretRightOutlined style={{marginLeft: '2px'}}/>
+						}
+						onClick={() => send({type: 'BTN_PLAY'})}
 					/>
 					<Button
 						shape="circle"
-						icon={bigModalMode ? <ShrinkOutlined /> : <ArrowsAltOutlined />}
-						onClick={() => {
-							setModalWidth(bigModalMode ? modalSizes.small : modalSizes.big);
-							setBigModalMode(!bigModalMode);
-						}}
+						icon={
+							state.matches('opened.size.increased') ?
+							<ShrinkOutlined /> :
+							<ArrowsAltOutlined />
+						}
+						onClick={() => send({type: 'BTN_SIZE'})}
 					/>
 				</>}
 			>
-				<VideoPlayer playing={videoPlaying}/>
+				<VideoPlayer playing={state.matches('opened.player.playing')}/>
 			</Modal>
 		</>
 	)

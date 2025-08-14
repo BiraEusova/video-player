@@ -7,7 +7,7 @@ const VideoPlayer = ({playing}) => {
 		<ReactPlayer
 			playing={playing}
 			muted
-			preload
+			preload={'true'}
 			loop={true}
 			style={{
 				width: '100%',

@@ -1,5 +1,5 @@
 import style from './Preview.module.css'
-import PlayIcon from '../assets/play-icon.svg?react';
+import PlayIcon from '../assets/icon/play-icon.svg?react';
 
 const Preview = ({onClick}) => {
 
