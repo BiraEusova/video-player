@@ -1,4 +1,3 @@
-import style from './VideoPlayer.module.css';
 import ReactPlayer from 'react-player';
 
 const VideoPlayer = ({playing}) => {
@@ -6,7 +5,7 @@ const VideoPlayer = ({playing}) => {
 	return (
 		<ReactPlayer
 			playing={playing}
-			muted
+			muted={true}
 			preload={'true'}
 			loop={true}
 			style={{

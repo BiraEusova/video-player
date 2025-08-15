@@ -8,14 +8,13 @@ import {videoModalMachine} from "./Xstate.js";
 
 function App() {
 	const [state, send] = useMachine(videoModalMachine);
-	const modalSize = state.context.modalSize;
 
 	return (
 		<>
 			<Preview onClick={() => send({type: 'OPEN'})}/>
 			<Modal
 				className='modal'
-				width={modalSize}
+				width={state.context.modalSize}
 				title="Video player"
 				centered
 				open={state.matches('opened')}
