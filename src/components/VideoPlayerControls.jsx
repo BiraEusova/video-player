@@ -4,22 +4,30 @@ import PauseIcon from "../assets/icon/pause-icon.svg?react";
 import PlayIcon from "../assets/icon/play-icon.svg?react";
 import CompressIcon from "../assets/icon/compress-icon.svg?react";
 import ExpandIcon from "../assets/icon/expand-icon.svg?react";
+import MutedIcon from "../assets/icon/muted-icon.svg?react";
+import UnmutedIcon from "../assets/icon/unmuted-icon.svg?react";
 
 const VideoPlayerControls = ({state, send}) => {
 
+	console.log()
+
+
 	return (
 		<div className={style.controls}>
-			<Button
-				onClick={() => send({type: 'BTN_PLAY'})}
-			>
-				{ state.matches('opened.player.playing') ?
+			<Button onClick={() => send({type: 'BTN_PLAY'})}>
+				{ state.matches('opened.playback.playing') ?
 					<PauseIcon /> :
 					<PlayIcon />
 				}
 			</Button>
-			<Button
-				onClick={() => send({type: 'BTN_SIZE'})}
-			>
+			<Button onClick={() => send({type: 'BTN_MUTE'})}>
+				{
+					state.matches('opened.muting.muted') ?
+						<MutedIcon /> :
+						<UnmutedIcon />
+				}
+			</Button>
+			<Button onClick={() => send({type: 'BTN_SIZE'})}>
 				{
 					state.matches('opened.size.increased') ?
 						<CompressIcon /> :

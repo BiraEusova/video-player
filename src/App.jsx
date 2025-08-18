@@ -21,7 +21,10 @@ function App() {
 				onCancel={() => send({type: 'CLOSE'})}
 				footer = {<VideoPlayerControls state={state} send={send}/>}
 			>
-				<VideoPlayer playing={state.matches('opened.player.playing')}/>
+				<VideoPlayer
+					playing={state.matches('opened.playback.playing')}
+					muted={state.matches('opened.muting.muted')}
+				/>
 			</Modal>
 		</>
 	)

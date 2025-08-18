@@ -44,7 +44,7 @@ export const videoModalMachine = createMachine({
 							}
 						}
 					},
-					player: {
+					playback: {
 						initial: 'playing',
 						states: {
 							playing: {
@@ -55,6 +55,21 @@ export const videoModalMachine = createMachine({
 							paused: {
 								on: {
 									BTN_PLAY: { target: 'playing'}
+								}
+							}
+						}
+					},
+					muting: {
+						initial: 'muted',
+						states: {
+							muted: {
+								on: {
+									BTN_MUTE: { target: 'unmuted'}
+								}
+							},
+							unmuted: {
+								on: {
+									BTN_MUTE: { target: 'muted'}
 								}
 							}
 						}
