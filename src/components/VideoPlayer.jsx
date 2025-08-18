@@ -1,15 +1,13 @@
 import ReactPlayer from 'react-player';
 
-const VideoPlayer = ({playing, muted}) => {
-
-	console.log('playing', playing)
-	console.log('muted', muted)
+const VideoPlayer = ({playing, muted, volume}) => {
 
 	return (
 		<ReactPlayer
 			playing={playing}
 			muted={muted}
 			preload={'true'}
+			volume={volume/100}
 			loop={true}
 			style={{
 				width: '100%',

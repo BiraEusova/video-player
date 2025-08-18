@@ -5,9 +5,12 @@ import VideoPlayer from "./components/VideoPlayer.jsx";
 import {useMachine} from "@xstate/react";
 import {videoModalMachine} from "./Xstate.js";
 import VideoPlayerControls from "./components/VideoPlayerControls.jsx";
+import {useState} from "react";
 
 function App() {
 	const [state, send] = useMachine(videoModalMachine);
+
+	const [volume, setVolume] = useState(50);
 
 	return (
 		<>
@@ -19,11 +22,18 @@ function App() {
 				centered
 				open={state.matches('opened')}
 				onCancel={() => send({type: 'CLOSE'})}
-				footer = {<VideoPlayerControls state={state} send={send}/>}
+				footer = {
+					<VideoPlayerControls
+						state={state}
+						send={send}
+						onVolumeChange={setVolume}
+					/>
+				}
 			>
 				<VideoPlayer
 					playing={state.matches('opened.playback.playing')}
 					muted={state.matches('opened.muting.muted')}
+					volume={volume}
 				/>
 			</Modal>
 		</>

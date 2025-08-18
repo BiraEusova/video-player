@@ -1,0 +1,123 @@
+.slider {
+    position: relative;
+    height: 40px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.slider__input {
+    z-index: 100;
+    background: none;
+    appearance: none;
+    accent-color: var(--grey-color);
+}
+
+.slider__input:hover {
+    accent-color: var(--blue-color);
+}
+
+.slider__input:active {
+    accent-color: var(--blue-color);
+    cursor: grabbing;
+    opacity: 1;
+}
+
+.slider__input::-webkit-slider-runnable-track {
+    background: none;
+}
+
+.slider__input::-moz-range-track {
+    background: none;
+}
+
+.slider__input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    border: none;
+    border-radius: 50%;
+    background: var(--grey-color);
+    transition: 0.3s ease-in-out;
+    cursor: grab;
+}
+
+.slider__input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    border: none;
+    border-radius: 50%;
+    background: var(--grey-color);
+    transition: 0.3s ease-in-out;
+    cursor: grab;
+}
+
+.slider__input:focus-visible {
+    background-color: var(--blue-color);
+}
+
+.slider__input:hover::-webkit-slider-thumb,
+.slider__input:focus-visible::-webkit-slider-thumb {
+    background-color: var(--blue-color);
+}
+
+.slider__input:hover::-moz-range-thumb,
+.slider__input:focus-visible::-moz-range-thumb {
+    background-color: var(--blue-color);
+}
+
+.slider__input:active::-webkit-slider-thumb {
+    background-color: var(--blue-color);
+}
+
+.slider__input:active::-moz-range-thumb {
+    background-color: var(--blue-color);
+}
+
+.slider__input:disabled {
+    pointer-events: none;
+}
+
+.slider__input:disabled::-webkit-slider-thumb {
+    background-color: var(--light-grey-color);
+    cursor: not-allowed;
+}
+
+.slider__input:disabled::-moz-range-thumb {
+    background-color: var(--light-grey-color);
+    cursor: not-allowed;
+}
+
+.slider__track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 10px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: white;
+    border: 1px solid var(--grey-color);
+    transition: all 0.3s ease-in-out;
+    transform: translate(0, -50%);
+}
+
+.slider__track {
+    border-color: var(--light-grey-color);
+}
+
+.slider__progress {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 10px;
+    border-radius: 8px;
+    background-color: var(--blue-color);
+    transform: translate(0, -50%);
+    transition: all 0.3s ease-in-out;
+}
+
+.slider__progress_disabled {
+    background-color: var(--light-grey-color);
+}
