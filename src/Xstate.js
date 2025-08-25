@@ -7,7 +7,7 @@ const modalSizes = {
 export const videoModalMachine = createMachine({
 		id: 'video-modal',
 		context: {
-			modalSize: modalSizes.big
+			modalSize: modalSizes.big,
 		},
 		initial: 'closed',
 		states: {
@@ -76,7 +76,7 @@ export const videoModalMachine = createMachine({
 					}
 				},
 				on: {
-					CLOSE: 'closed'
+					CLOSE: { target: 'closed'}
 				}
 			}
 		}

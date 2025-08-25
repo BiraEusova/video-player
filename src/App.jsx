@@ -9,33 +9,34 @@ import {useState} from "react";
 
 function App() {
 	const [state, send] = useMachine(videoModalMachine);
-
 	const [volume, setVolume] = useState(50);
 
 	return (
 		<>
 			<Preview onClick={() => send({type: 'OPEN'})}/>
-			<Modal
-				className='modal'
-				width={state.context.modalSize}
-				title="Video player"
-				centered
-				open={state.matches('opened')}
-				onCancel={() => send({type: 'CLOSE'})}
-				footer = {
-					<VideoPlayerControls
-						state={state}
-						send={send}
-						onVolumeChange={setVolume}
-					/>
-				}
-			>
-				<VideoPlayer
-					playing={state.matches('opened.playback.playing')}
-					muted={state.matches('opened.muting.muted')}
-					volume={volume}
-				/>
-			</Modal>
+				{state.matches('opened') && (
+					<Modal
+					className='modal'
+					width={state.context.modalSize}
+					title="Video player"
+					centered
+					open={state.matches('opened')}
+					onCancel={() => send({type: 'CLOSE'})}
+					footer = {
+						<VideoPlayerControls
+							state={state}
+							send={send}
+							onVolumeChange={setVolume}
+						/>
+					}
+				>
+						<VideoPlayer
+							playing={state.matches('opened.playback.playing')}
+							muted={state.matches('opened.muting.muted')}
+							volume={volume}
+						/>
+				</Modal>
+				)}
 		</>
 	)
 }
